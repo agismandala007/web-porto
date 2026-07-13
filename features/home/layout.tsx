@@ -10,7 +10,7 @@ import {
   EducationVerticalTimeline,
   SocialMediaLink,
 } from './components'
-import { additionalEducation, formalEducation } from './data/education'
+import { dataStaticEducation } from '@/const/data-static-education'
 
 export default function HomeLayout() {
   return (
@@ -68,43 +68,6 @@ export default function HomeLayout() {
       </div>
 
       <div className="flex flex-col gap-10 lg:gap-16">
-        <div className="mx-auto flex w-full max-w-screen-xl flex-col gap-3.5 px-10 lg:px-2">
-          <div className="flex flex-col gap-3.5 text-center text-grainbown-950">
-            <h1 className="text-xl font-bold lg:text-3xl">Skills</h1>
-            <p>The Technologies I Use</p>
-          </div>
-          <div className="mx-auto flex w-fit flex-col gap-7 lg:gap-20">
-            <div className="flex gap-7 lg:gap-20">
-              <Icon icon="devicon:javascript" className="size-8 lg:size-24" />
-              <Icon icon="devicon:typescript" className="size-8 lg:size-24" />
-              <Icon icon="devicon:react" className="size-8 lg:size-24" />
-              <Icon icon="devicon:reactrouter" className="size-8 lg:size-24" />
-              <Icon icon="devicon:zustand" className="size-8 lg:size-24" />
-              <Icon icon="devicon:nextjs" className="size-8 lg:size-24" />
-              <Icon
-                icon="devicon:apollographql"
-                className="size-8 lg:size-24"
-              />
-            </div>
-            <div className="flex gap-7 lg:gap-20">
-              <Icon icon="devicon:php" className="size-8 lg:size-24" />
-              <Icon icon="devicon:laravel" className="size-8 lg:size-24" />
-            </div>
-            <div className="flex gap-7 lg:gap-20">
-              <Icon icon="devicon:python" className="size-8 lg:size-24" />
-              <Icon icon="devicon:jupyter" className="size-8 lg:size-24" />
-              <Icon icon="devicon:pandas" className="size-8 lg:size-24" />
-              <Icon icon="devicon:scikitlearn" className="size-8 lg:size-24" />
-              <Icon icon="devicon:fastapi" className="size-8 lg:size-24" />
-            </div>
-            <div className="flex gap-7 lg:gap-20">
-              <Icon icon="devicon:csharp" className="size-8 lg:size-24" />
-              <Icon icon="logos:dotnet" className="size-8 lg:size-24" />
-              <Icon icon="devicon:dotnetcore" className="size-8 lg:size-24" />
-            </div>
-          </div>
-        </div>
-
         <div className="flex flex-col">
           <div className="flex flex-col gap-3.5 text-center text-grainbown-950">
             <h1 className="text-3xl font-bold">Project</h1>
@@ -118,42 +81,25 @@ export default function HomeLayout() {
           </div>
         </div>
 
-        <div className="mx-auto flex w-full max-w-screen-xl flex-col px-10 lg:grid lg:grid-cols-2 lg:px-2">
-          <div className="flex w-full flex-col gap-7 text-black lg:w-96">
-            <h2 className="text-3xl font-bold">Education</h2>
-            <p>
-              I am a student at Ahmad Dahlan University, majoring in Information
-              Technology. I am also a graduate of Vocational High School 2
-              Tasikmalaya, majoring in Computer and Network Engineering.
-            </p>
-          </div>
-          <div className="flex flex-col gap-5">
-            <div className="flex gap-5 text-ginfizz-950">
-              <Icon icon="zondicons:education" className="size-8" />
-              <h1 className="font-medium">Formal Education</h1>
+        {dataStaticEducation.map((item, i) => (
+          <div
+            key={i}
+            className="mx-auto flex w-full max-w-screen-xl flex-col px-10 lg:grid lg:grid-cols-2 lg:flex-row lg:px-2"
+          >
+            <div className="flex w-full flex-col gap-7 text-black lg:w-96">
+              <h2 className="text-3xl font-bold">{item.name}</h2>
+              <p>{item.description}</p>
             </div>
-            <EducationVerticalTimeline education={formalEducation} />
-          </div>
-        </div>
 
-        <div className="mx-auto flex w-full max-w-screen-xl flex-col px-10 lg:grid lg:grid-cols-2 lg:flex-row lg:px-2">
-          <div className="flex w-full flex-col gap-7 text-black lg:w-96">
-            <h2 className="text-3xl font-bold">Additional Education</h2>
-            <p>
-              I am a student at Ahmad Dahlan University, majoring in Information
-              Technology. I am also a graduate of Vocational High School 2
-              Tasikmalaya, majoring in Computer and Network Engineering.
-            </p>
-          </div>
-
-          <div className="flex w-full flex-col gap-5">
-            <div className="flex gap-5 text-ginfizz-950">
-              <Icon icon="zondicons:book-reference" className="size-8" />
-              <h1 className="font-medium">Additional Education</h1>
+            <div className="flex w-full flex-col gap-5">
+              <div className="flex gap-5 text-ginfizz-950">
+                <Icon icon="zondicons:book-reference" className="size-8" />
+                <h1 className="font-medium">{item.name}</h1>
+              </div>
+              <EducationVerticalTimeline education={item.educations} />
             </div>
-            <EducationVerticalTimeline education={additionalEducation} />
           </div>
-        </div>
+        ))}
       </div>
     </main>
   )

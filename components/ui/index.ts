@@ -1,4 +1,4 @@
-import { Badge, BadgeVariant } from './badge'
+export * from './badge'
 import { Button, buttonVariants } from './button'
 import {
   Card,
@@ -17,12 +17,10 @@ import {
   CarouselPrevious,
 } from './carousel'
 import RotatingText from './rotation-text'
-import { ScrollArea, ScrollBar } from './scoll-area'
 import { VerticalTimeline, VerticalTimelineElement } from './vertical-timeline'
+import {ScrollArea, ScrollBar} from './scroll-area'
 
 export {
-  Badge,
-  BadgeVariant,
   Button,
   buttonVariants,
   Card,
@@ -38,7 +36,7 @@ export {
   CarouselNext,
   CarouselPrevious,
   RotatingText,
-  ScrollArea,
+  ScrollArea, 
   ScrollBar,
   VerticalTimeline,
   VerticalTimelineElement,
