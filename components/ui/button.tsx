@@ -6,7 +6,7 @@ const colorMap = {
   primary: 'bg-ginfizz-700 text-white ',
   secondary: 'bg-white text-brand-primary border border-primary',
   tertiary: 'text-brand-primary',
-  link: 'text-brand-primary',
+  link: 'text-black',
 }
 
 const buttonVariants = cva('text-md px-6 font-medium w-fit', {

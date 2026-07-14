@@ -15,7 +15,24 @@ import { dataStaticEducation } from '@/const/data-static-education'
 export default function HomeLayout() {
   return (
     <main className="flex w-full flex-col">
-      <div className="mx-auto flex h-screen max-w-screen-xl items-center">
+
+      {/* Nav Bar */}
+      <nav className="sticky top-0 z-50 flex w-full items-center justify-center py-4 bg-sunshade-50">
+        <div className="flex gap-4 items-center">
+          <Button variant="link" rounded="full">
+            Home
+          </Button>
+          <Button variant="link" rounded="full">
+            Projects
+          </Button>
+          <Button variant="link" rounded="full">
+            Contact
+          </Button>
+        </div>
+      </nav>
+
+      {/* Title Section */}
+      <div className="mx-auto flex h-screen max-w-screen-xl items-center ">
         <div className="mx-auto flex items-center justify-between lg:grid lg:grid-cols-2">
           <div className="flex h-fit items-center gap-20 justify-self-start">
             <SocialMediaLink />
