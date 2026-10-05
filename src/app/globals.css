@@ -1,26 +1,144 @@
 @import "tailwindcss";
 
+@plugin "tailwindcss-animate";
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --trackColor: rgba(0, 0, 0, 0);
+  --thumbColor: rgba(152, 162, 179, 0.5);
+  --thumbColorHover: rgba(152, 162, 179, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer utilities {
+  .break-word {
+    word-break: break-word;
+  }
+}
+
+@theme {
+  --font-sans: "Work Sans";
+  --font-mono: "Space Mono", "ui-monospace", "SFMono-Regular";
+  --font-raleway: "Raleway", sans-serif;
+
+  --color-gray-25: oklch(99.13% 0.0013 286.38);
+  --color-gray-50: oklch(98.46% 0.0017 247.84);
+  --color-gray-100: oklch(96.65% 0.0045 258.32);
+  --color-gray-200: oklch(94.27% 0.0058 264.53);
+  --color-gray-300: oklch(87.15% 0.0123 259.82);
+  --color-gray-400: oklch(70.98% 0.0273 261.12);
+  --color-gray-500: oklch(54.44% 0.035 265.11);
+  --color-gray-600: oklch(44.22% 0.0355 257.79);
+  --color-gray-700: oklch(36.95% 0.0381 260.5);
+  --color-gray-800: oklch(27.76% 0.0341 255.81);
+  --color-gray-900: oklch(20.99% 0.0341 263.44);
+
+  --color-primary-50: oklch(0.9797 0.0318 97.29);
+  --color-primary-100: oklch(0.9656 0.0663 98.22);
+  --color-primary-200: oklch(0.9279 0.1173 95.47);
+  --color-primary-300: oklch(0.8793 0.1584 90.49);
+  --color-primary-400: oklch(0.8279 0.1678 82.21);
+  --color-primary-500: oklch(0.7634 0.1599 75.3);
+  --color-primary-600: oklch(0.6555 0.1461 65.46);
+  --color-primary-700: oklch(0.5331 0.1285 56.06);
+  --color-primary-800: oklch(0.4594 0.1101 52.69);
+  --color-primary-900: oklch(0.4077 0.0964 49.2);
+  --color-primary-950: oklch(0.2776 0.0698 46.33);
+
+  --color-success-25: oklch(98.97% 0.0107 158.85);
+  --color-success-50: oklch(97.88% 0.0221 160.24);
+  --color-success-100: oklch(94.89% 0.0556 156.34);
+  --color-success-200: oklch(90.39% 0.1006 157.23);
+  --color-success-300: oklch(84.53% 0.1477 157.54);
+  --color-success-400: oklch(77.3% 0.1754 155.5);
+  --color-success-500: oklch(68.59% 0.1667 154.86);
+  --color-success-600: oklch(59.7% 0.1485 154.46);
+  --color-success-700: oklch(51% 0.1218 156.56);
+  --color-success-800: oklch(43.15% 0.0995 157.67);
+  --color-success-900: oklch(37.81% 0.0843 159.06);
+
+  --color-warning-25: oklch(99.14% 0.0098 87.47);
+  --color-warning-50: oklch(98.49% 0.0204 91.58);
+  --color-warning-100: oklch(95.6% 0.0552 91.41);
+  --color-warning-200: oklch(91.12% 0.1109 90.28);
+  --color-warning-300: oklch(85.94% 0.1499 84.74);
+  --color-warning-400: oklch(81.09% 0.1634 75.65);
+  --color-warning-500: oklch(74.69% 0.1701 62.11);
+  --color-warning-600: oklch(64.63% 0.1695 50.2);
+  --color-warning-700: oklch(53.94% 0.1562 42.99);
+  --color-warning-800: oklch(46.15% 0.1337 40.94);
+  --color-warning-900: oklch(40.61% 0.1142 40.57);
+
+  --color-danger-25: oklch(99.09% 0.0045 34.31);
+  --color-danger-50: oklch(97.25% 0.0119 23.7);
+  --color-danger-100: oklch(93.94% 0.0288 22.95);
+  --color-danger-200: oklch(89% 0.0559 22.35);
+  --color-danger-300: oklch(80.14% 0.1094 24.57);
+  --color-danger-400: oklch(70.86% 0.1699 26.47);
+  --color-danger-500: oklch(63.71% 0.2104 28.54);
+  --color-danger-600: oklch(57.58% 0.2088 29.48);
+  --color-danger-700: oklch(50.03% 0.1821 29.51);
+  --color-danger-800: oklch(43.22% 0.15 28.99);
+  --color-danger-900: oklch(39.75% 0.1183 31.52);
+
+  --text-2xs: 0.68rem;
+
+  --animate-slideIn: slide-in 0.3s ease-out;
+  --animate-slideOut: slide-out 0.3s ease-out;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0.25;
+    }
+    to {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0.25;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #fff8eb;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-raleway);
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--color-gray-700);
+  background-color: #fff8eb;
 }
