@@ -6,7 +6,7 @@ const colorButtonMap = {
     linkGray:
       'text-gray-700 hover:text-gray-800 focus:text-gray-800 disabled:text-gray-300',
     primary:
-      '!bg-primary-600 hover:!bg-primary-700 focus:!bg-primary-600 disabled:!bg-primary-200 text-white',
+      '!bg-primary-700 hover:!bg-primary-800 focus:!bg-primary-700 disabled:!bg-primary-200 text-white',
     secondary:
       '!bg-primary-25 hover:!bg-primary-100 focus:!bg-primary-25 disabled:!bg-primary-25 text-primary-700 disabled:text-primary-300',
     secondaryGray:
